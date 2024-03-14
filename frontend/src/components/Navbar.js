@@ -1,5 +1,7 @@
 import React from "react";
+import "./Navbar.css"
 import { NavLink, Link } from "react-router-dom";
+import DummyUser from "../images/user.jpg"
 
 function NavBar() {
   return (
@@ -19,7 +21,7 @@ function NavBar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <Link to="/" className="navbar-brand">
-            🛒 Ecommerce App
+            CleanSweep
           </Link>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -44,7 +46,7 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <NavLink to="/cart" className="nav-link">
-                Cart (0)
+                <img src={DummyUser} alt="Dummy" className="dummyUser"/>
               </NavLink>
             </li>
           </ul>

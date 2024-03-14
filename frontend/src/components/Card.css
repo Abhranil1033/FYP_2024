@@ -1,0 +1,22 @@
+.cardContainer{
+    border : 2px solid rgb(165, 164, 164);
+    width: 200px;
+    height : 300px;
+    margin-bottom:80px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dirtImage{
+    width: 195px;
+    height : 295px;
+    border-radius: 5px;
+}
+
+.cardDetails{
+    background-color: rgb(234, 219, 247);
+    width: 195px;
+    height : 295px;
+    position: relative;
+    
+}
