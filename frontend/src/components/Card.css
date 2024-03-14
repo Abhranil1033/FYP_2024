@@ -13,10 +13,38 @@
     border-radius: 5px;
 }
 
-.cardDetails{
+/* .cardDetails{
     background-color: rgb(234, 219, 247);
     width: 195px;
     height : 295px;
     position: relative;
-    
+
+} */
+
+.cardContainer:hover .viewDetails{
+    display: block;
+}
+
+.cardContainer:hover .dirtImage{
+    filter: blur(1px);
+}
+
+.viewDetails {
+    display: none;
+    padding: 20px;
+    background-color: rgba(69, 95, 213, 0.6);
+    margin-top: -65px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+.viewDetails:hover{
+    transform: scale(0.95);
+    transition: 0.4s;
+    background-color: rgba(45, 81, 242, 0.6);
 }
