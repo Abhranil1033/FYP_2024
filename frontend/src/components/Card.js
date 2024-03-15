@@ -7,6 +7,7 @@ const Card = () => {
     <div className='cardContainer'>
         <img className='dirtImage' src={Dummy} alt="image"/>
         <p className='viewDetails'>View Details</p>
+        <p className='place'>Silchar, Assam</p>
     </div>
   )
 }

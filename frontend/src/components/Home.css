@@ -1,7 +1,5 @@
 .homeContainer{
     padding: 50px;
-    font-size: 30px;
-    font-weight: bold;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,6 +19,8 @@
     flex-direction: row;
     width:100%;
     justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .sideLines{

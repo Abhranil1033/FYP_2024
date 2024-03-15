@@ -45,7 +45,7 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/cart" className="nav-link">
+              <NavLink to="/dashboard" className="nav-link">
                 <img src={DummyUser} alt="Dummy" className="dummyUser"/>
               </NavLink>
             </li>
