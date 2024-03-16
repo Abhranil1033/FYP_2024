@@ -29,11 +29,7 @@ function NavBar() {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to="/category" className="nav-link ">
-                Category
-              </NavLink>
-            </li>
+           
             <li className="nav-item">
               <NavLink to="/register" className="nav-link">
                 Register
