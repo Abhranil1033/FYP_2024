@@ -7,6 +7,7 @@ import Footer from './components/Footer.js';
 import Register from './components/Register.js';
 import Login from './components/Login.js';
 import Contact from './components/Contact.js';
+import Profile from './components/Profile';
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
-
+        <Route path="/profile" element={<Profile />}></Route>
       </Routes>
       <Footer/>
     </Router>

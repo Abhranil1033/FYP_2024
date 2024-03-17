@@ -1,18 +1,17 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 
 import "../Styles/AuthStyles.css"
 const Register = () => {
-  const [name,setName] = useState("");
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
-  const [phone,setPhone] = useState("");
-  const [address,setAddress] = useState("");
-  const [answer,setAnswer] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [answer, setAnswer] = useState("");
   const navigate = useNavigate();
-  // form function
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +29,7 @@ const Register = () => {
         navigate("/login");
       } else {
         toast.error(res.data.message);
-        
+
       }
     } catch (error) {
       console.log(error);
@@ -38,23 +37,18 @@ const Register = () => {
     }
   };
 
-    // form function
-
-    
-
-    
 
   return (
-      <>
+    <>
       <div className="form-container ">
         <form onSubmit={handleSubmit}>
           <h4 className="title">REGISTER FORM</h4>
           <div className="mb-3">
             <input
               type="text"
-              
+
               value={name}
-              onChange={(e)=>{setName(  e.target.value)}}
+              onChange={(e) => { setName(e.target.value) }}
               className="form-control"
               id="exampleInputEmail1"
               placeholder="Enter Your Name"
@@ -66,7 +60,7 @@ const Register = () => {
             <input
               type="email"
               value={email}
-              onChange={(e)=>{setEmail(e.target.value)}}
+              onChange={(e) => { setEmail(e.target.value) }}
               className="form-control"
               id="exampleInputEmail1"
               placeholder="Enter Your Email "
@@ -77,7 +71,7 @@ const Register = () => {
             <input
               type="password"
               value={password}
-              onChange={(e)=>{setPassword(e.target.value)}}
+              onChange={(e) => { setPassword(e.target.value) }}
               className="form-control"
               id="exampleInputPassword1"
               placeholder="Enter Your Password"
@@ -86,10 +80,10 @@ const Register = () => {
           </div>
           <div className="mb-3">
             <input
-              type="text" 
+              type="text"
               value={phone}
-              onChange={(e)=>{setPhone(e.target.value)}}
-              
+              onChange={(e) => { setPhone(e.target.value) }}
+
               className="form-control"
               id="exampleInputEmail1"
               placeholder="Enter Your Phone"
@@ -100,8 +94,8 @@ const Register = () => {
             <input
               type="text"
               value={address}
-              onChange={(e)=>{setAddress(e.target.value)}}
-              
+              onChange={(e) => { setAddress(e.target.value) }}
+
               className="form-control"
               id="exampleInputEmail1"
               placeholder="Enter Your Address"
@@ -112,8 +106,8 @@ const Register = () => {
             <input
               type="text"
               value={answer}
-              onChange={(e)=>{setAnswer(e.target.value)}}
-              
+              onChange={(e) => { setAnswer(e.target.value) }}
+
               className="form-control"
               id="exampleInputEmail1"
               placeholder="Your favourite sport?"
