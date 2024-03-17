@@ -5,9 +5,11 @@ import Dummy from "../images/dirt.jpeg";
 const Card = () => {
   return (
     <div className='cardContainer'>
-        <img className='dirtImage' src={Dummy} alt="image"/>
+      <div className='homeImg'>
+        <img className='dirtImage' src={Dummy} alt="image" />
         <p className='viewDetails'>View Details</p>
-        <p className='place'>Silchar, Assam</p>
+      </div>
+      <p className='place'>Silchar, Assam</p>
     </div>
   )
 }
