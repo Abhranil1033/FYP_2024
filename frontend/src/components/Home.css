@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color : white;
 }
 
 .homeCards {
@@ -26,7 +27,7 @@
 .sideLines{
     height:1px;
     width:20%;
-    border: 2px solid black;
+    border: 2px solid white;
     margin:2%;
 }
 

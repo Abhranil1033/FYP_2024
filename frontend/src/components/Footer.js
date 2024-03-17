@@ -4,12 +4,14 @@ import './Footer.css'
 const Footer = () => {
   return (
     <div className='footer footerCont'>
-        <h1 className='text-center'>All right reserved &copy; Gaurav</h1>
+      <h1 className='text-center'>All right reserved &copy; Gaurav</h1>
+      <div>
         <p className='text-center mt-3'>
-        <Link to="/about">About </Link>
-        |<Link to="/contact">Contact</Link>
-        |<Link to="/policy">Privacy Policy</Link>
+          <Link to="/about">About </Link>
+          |<Link to="/contact"> Contact </Link>
+          |<Link to="/policy"> Privacy Policy</Link>
         </p>
+      </div>
     </div>
   );
 };

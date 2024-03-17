@@ -30,7 +30,16 @@ function NavBar() {
                 Home
               </NavLink>
             </li>
-           
+            <li className="nav-item">
+              <NavLink to="/upload" className="nav-link ">
+                Upload
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/blogs" className="nav-link ">
+                Blogs
+              </NavLink>
+            </li>
             <li className="nav-item">
               <NavLink to="/register" className="nav-link">
                 Register
