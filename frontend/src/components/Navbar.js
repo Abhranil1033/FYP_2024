@@ -2,6 +2,7 @@ import React from "react";
 import "./Navbar.css"
 import { NavLink, Link } from "react-router-dom";
 import DummyUser from "../images/user.jpg"
+import { Toaster } from 'react-hot-toast';
 
 function NavBar() {
   return (
@@ -49,6 +50,7 @@ function NavBar() {
         </div>
       </div>
     </nav>
+    <Toaster/>
   </>
   );
 }
