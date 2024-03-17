@@ -1,21 +1,74 @@
-import React from 'react';
-import './Profile.css';
-import User from "../images/user.jpg"
+import React from "react";
+import "./Profile.css";
+import User from "../images/user.jpg";
+import { Link } from "react-router-dom";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 const Profile = () => {
   return (
-    <div className='profileContainer'>
-        <div className='profileImg'>
-            <img src={User}></img>
-        </div>
-        <div className='profileDetails'>
-            <p>Name</p>
-            <p>Age</p>
-            <p>Residence</p>
-            <p>Joined</p>
-        </div>
-    </div>
-  )
-}
+    <>
+      <section className="vh-100">
+        <div className="container py-5 h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col  col-lg-6 mb-4 mb-lg-0">
+              <div className="row g-0 carstl">
+                <div
+                  className="col-md-4 gradient-custom text-center text-black"
+                  style={{
+                    borderTopLeftRadius: ".5rem",
+                    borderBottomLeftRadius: ".5rem",
+                  }}
+                >
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                    alt="Avatar"
+                    className="img-fluid my-5"
+                    style={{ width: 80 }}
+                  />
+                  <h5>Marie Horwitz</h5>
 
-export default Profile
+                  <i className="far fa-edit mb-5" />
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body p-4">
+                    <h4>Information</h4>
+                    <hr className="mt-0 mb-4" />
+                    <div className="col pt-1">
+                      <div className="col-6 mb-3">
+                        <h6>Email</h6>
+                        <p className="text-muted">gaurav@example.com</p>
+                      </div>
+                      <div className="col-6 mb-3">
+                        <h6>Phone</h6>
+                        <p className="text-muted">123 456 789</p>
+                      </div>
+
+                      <div className="row pt-1 editDiv">
+                        <div>
+                          <button className="editProfileButton">
+                            Edit Profile
+                          </button>
+                        </div>
+                        <div className="col pt-1">
+                          <Link>
+                            <TwitterIcon />
+                          </Link>
+                          <Link>
+                            <FacebookIcon />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Profile;

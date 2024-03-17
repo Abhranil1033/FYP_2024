@@ -8,6 +8,7 @@ import Register from './components/Register.js';
 import Login from './components/Login.js';
 import Contact from './components/Contact.js';
 import Profile from './components/Profile';
+import About from './components/About.js';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/about" element={<About />}></Route>
       </Routes>
       <Footer/>
     </Router>
