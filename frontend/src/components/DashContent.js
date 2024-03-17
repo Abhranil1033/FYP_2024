@@ -102,13 +102,13 @@ function DashContent() {
           </div>
           <h1>33</h1>
         </div>
-        <div className='card'>
+        {/* <div className='card'>
           <div className='card-inner'>
             <h3>ALERTS</h3>
             <BsFillBellFill className='card_icon' />
           </div>
           <h1>42</h1>
-        </div>
+        </div> */}
       </div>
 
       <div className='charts'>
@@ -125,8 +125,8 @@ function DashContent() {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
+            <XAxis dataKey="name" tick={{ fill: 'white' }}/>
+            <YAxis tick={{ fill: 'white' }}/>
             <Tooltip />
             <Legend />
             <Bar dataKey="pv" fill="#8884d8" />
@@ -147,8 +147,8 @@ function DashContent() {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
+            <XAxis dataKey="name" tick={{ fill: 'white' }} />
+            <YAxis tick={{ fill: 'white' }}/>
             <Tooltip />
             <Legend />
             <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
