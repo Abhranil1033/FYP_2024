@@ -4,6 +4,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import HelpIcon from '@mui/icons-material/Help';
 import LogoutIcon from '@mui/icons-material/Logout';
 import './Sidebar.css';
+import { Link } from 'react-router-dom';
 
 function Sidebar({openSidebarToggle, OpenSidebar}) {
   return (
@@ -17,24 +18,24 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
 
         <ul className='sidebar-list'>
             <li className='sidebar-list-item'>
-                <a href="/profile">
+                <Link to={"/profile"}>
                   <Person2Icon className='icon' /> Profile
-                </a>
+                </Link>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
+                <Link to={"/inbox"}>
                     <MailIcon className='icon'/> Inbox
-                </a>
+                </Link>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
+                <Link to={"/help"}>
                     <HelpIcon className='icon'/> Help
-                </a>
+                </Link>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
+                <Link to={"/Logout"}>
                     <LogoutIcon className='icon'/> Logout
-                </a>
+                </Link>
             </li>
         </ul>
     </aside>

@@ -1,10 +1,21 @@
 import React from "react";
 import "./Navbar.css"
+// import { useAuth } from "../context/auth";
 import { NavLink, Link } from "react-router-dom";
 import DummyUser from "../images/user.jpg"
 import { Toaster } from 'react-hot-toast';
 
 function NavBar() {
+  // const [auth, setAuth] = useAuth();
+  // const handleLogout = () => {
+  //   setAuth({
+  //     ...auth,
+  //     user: null,
+  //     token: "",
+  //   });
+  //   localStorage.removeItem("auth");
+  //   toast.success("Logout Successfully");
+  // };
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -40,6 +51,7 @@ function NavBar() {
                 Blogs
               </NavLink>
             </li>
+           
             <li className="nav-item">
               <NavLink to="/register" className="nav-link">
                 Register
@@ -50,11 +62,23 @@ function NavBar() {
                 Login
               </NavLink>
             </li>
-            <li className="nav-item">
+{/*            
+                  <li>
+              <NavLink
+                onClick={handleLogout}
+                to="/login"
+                className="dropdown-item"
+              >
+                Logout
+              </NavLink>
+            </li> */}
+                <li className="nav-item">
               <NavLink to="/dashboard" className="nav-link">
                 <img src={DummyUser} alt="Dummy" className="dummyUser"/>
               </NavLink>
             </li>
+        
+          
           </ul>
         </div>
       </div>
