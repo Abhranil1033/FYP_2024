@@ -1,21 +1,21 @@
 import React from "react";
 import "./Navbar.css"
-// import { useAuth } from "../context/auth";
+import { useAuth } from "../context/auth";
 import { NavLink, Link } from "react-router-dom";
 import DummyUser from "../images/user.jpg"
-import { Toaster } from 'react-hot-toast';
+import { Toaster,toast } from 'react-hot-toast';
 
 function NavBar() {
-  // const [auth, setAuth] = useAuth();
-  // const handleLogout = () => {
-  //   setAuth({
-  //     ...auth,
-  //     user: null,
-  //     token: "",
-  //   });
-  //   localStorage.removeItem("auth");
-  //   toast.success("Logout Successfully");
-  // };
+  const [auth, setAuth] = useAuth();
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+    toast.success("Logout Successfully");
+  };
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -51,8 +51,8 @@ function NavBar() {
                 Blogs
               </NavLink>
             </li>
-           
-            <li className="nav-item">
+           {!auth.user? (<>
+           <li className="nav-item">
               <NavLink to="/register" className="nav-link">
                 Register
               </NavLink>
@@ -61,22 +61,39 @@ function NavBar() {
               <NavLink to="/login" className="nav-link">
                 Login
               </NavLink>
-            </li>
-{/*            
-                  <li>
-              <NavLink
-                onClick={handleLogout}
-                to="/login"
-                className="dropdown-item"
-              >
-                Logout
-              </NavLink>
-            </li> */}
-                <li className="nav-item">
+            </li></>):(<>
+              <li className="nav-item dropdown">
+                    <NavLink
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {auth?.user?.name}
+                    </NavLink>
+                    <ul className="dropdown-menu">
+                    <li className="nav-item">
               <NavLink to="/dashboard" className="nav-link">
                 <img src={DummyUser} alt="Dummy" className="dummyUser"/>
               </NavLink>
             </li>
+            
+                      <li>
+                        <NavLink
+                          onClick={handleLogout}
+                          to="/login"
+                          className="dropdown-item"
+                        >
+                          Logout
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </li>
+                </>)}
+        
+           
+                  
         
           
           </ul>

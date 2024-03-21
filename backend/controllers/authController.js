@@ -1,4 +1,5 @@
 import userModel from "../models/userModel.js";
+import JWT from "jsonwebtoken"
 // import { comparePassword, hashPassword} from "../helpers/authHelpers.js"; 
 export const registerController = async (req, res) => {
     try {
@@ -99,6 +100,7 @@ export const loginController = async (req,res) => {
           address:user.address,
          
         },
+        token
         
       });
   

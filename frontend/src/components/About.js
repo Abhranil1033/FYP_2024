@@ -12,7 +12,7 @@ const About = () => {
             style={{ width: "100%" }}
           />
         </div>
-        <div className="col-md-4 text">
+        <div className="col-md-6 text">
         <h1 className="bg-dark p-2 text-white text-center">ABOUT US</h1>
           <p className="text-justify mt-2 ">
          
