@@ -13,6 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [auth,setAuth] = useAuth();
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -74,7 +75,7 @@ const Login = () => {
             />
           </div>
           <div className='mb-3'>
-            <button type="submit" className="btn btn-primary"  >
+            <button type="button" className="btn btn-primary"  >
               FORGOT PASSWORD
             </button>
           </div>

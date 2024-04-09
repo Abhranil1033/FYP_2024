@@ -7,15 +7,15 @@
     justify-content: center;
 }
 
-form{
+.uploadForm{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 2px dashed black;
     background-image:linear-gradient(rgb(144, 144, 248),rgb(247,237,237));    
-    height:300px;
-    width:500px;
+    height:70%;
+    width:80%;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -27,10 +27,19 @@ form{
     align-items: center;
     padding: 15px 20px;
     border-radius: 5px;
-    background-color: rgb(144, 144, 248);}
+    background-color: rgb(144, 144, 248);
+}
 
 .uploadButton :hover{
     cursor: pointer;
     transform: scale(0.9);
     transition: 0.4s;
+}
+
+.inputText{
+    width : 50%;
+    margin:20px;
+    padding:10px;
+    border-radius: 10px;
+    border : 2px solid white
 }

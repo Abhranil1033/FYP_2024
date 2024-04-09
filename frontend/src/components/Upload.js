@@ -4,12 +4,19 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import DeleteIcon from '@mui/icons-material/Delete';
 import UploadIcon from '@mui/icons-material/Upload';
+import { useAuth } from "../context/auth";
+import { Toaster, toast } from 'react-hot-toast';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+
+
 
 const Upload = () => {
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("No selected file");
+  const [auth, setAuth] = useAuth();
 
-  const handleCloudClick = () =>{
+
+  const handleCloudClick = () => {
     document.getElementById("fileInput").click()
   }
 
@@ -32,11 +39,26 @@ const Upload = () => {
 
   return (
     <div className='uploadContainer'>
-      <form>
+      <form className='uploadForm'>
+        <input type="text"
+          placeholder=' Enter place name'
+          className='inputText' />
+        <input type="text"
+          placeholder=' Enter state'
+          className='inputText' />
+        <input type="text"
+          placeholder=' Enter latitude'
+          className='inputText' />
+        <input type="text"
+          placeholder=' Enter longitude'
+          className='inputText' />
+        <input type="date" placeholder='Select date' className='inputText' />
+        <input type="time" placeholder='Select time' className='inputText' />
+
+
         <input
           type="file"
           accept='image/*'
-          className='inputField'
           hidden
           id="fileInput"
           onChange={handleFileChange}
@@ -44,6 +66,7 @@ const Upload = () => {
         {image ?
           <img src={image} width={60} height={60} alt={fileName} /> :
           <CloudUploadIcon fontSize='large' onClick={handleCloudClick} />}
+        <h6>Click here to upload image</h6>
       </form>
       <section className='uploadRow'>
         <InsertDriveFileIcon color='#1475cf' />

@@ -1,0 +1,50 @@
+.slide-container{
+    padding: 20px;
+    height : 100vh;
+}
+
+.place{
+    color: white;
+}
+
+.belowSlides{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.description{
+    background-image:linear-gradient(rgb(144, 144, 248),rgb(247,237,237));    
+    text-align: center;
+    margin-top: 50px;
+    width: 50%;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 10px grey;
+}
+
+.detailsText{
+    word-wrap: break-word;
+}
+
+.detailsButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: rgb(144, 144, 248);
+    border-radius: 5px;
+}
+
+.registerLink{
+    color: white;
+    text-decoration: none;
+}
+
+.detailsButton :hover{
+    transform: scale(0.99);
+    transition: 0.4s;
+}

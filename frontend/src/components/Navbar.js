@@ -3,7 +3,7 @@ import "./Navbar.css"
 import { useAuth } from "../context/auth";
 import { NavLink, Link } from "react-router-dom";
 import DummyUser from "../images/user.jpg"
-import { Toaster,toast } from 'react-hot-toast';
+import { Toaster, toast } from 'react-hot-toast';
 
 function NavBar() {
   const [auth, setAuth] = useAuth();
@@ -14,55 +14,55 @@ function NavBar() {
       token: "",
     });
     localStorage.removeItem("auth");
-    toast.success("Logout Successfully");
+    toast.success("Logout Successful");
   };
   return (
     <>
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo01"
-          aria-controls="navbarTogglerDemo01"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <Link to="/" className="navbar-brand">
-            CleanSweep
-          </Link>
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink to="/" className="nav-link ">
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/upload" className="nav-link ">
-                Upload
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/blogs" className="nav-link ">
-                Blogs
-              </NavLink>
-            </li>
-           {!auth.user? (<>
-           <li className="nav-item">
-              <NavLink to="/register" className="nav-link">
-                Register
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/login" className="nav-link">
-                Login
-              </NavLink>
-            </li></>):(<>
-              <li className="nav-item dropdown">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container-fluid">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <Link to="/" className="navbar-brand">
+              CleanSweep
+            </Link>
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <NavLink to="/" className="nav-link ">
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/upload" className="nav-link ">
+                  Upload
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/blogs" className="nav-link ">
+                  Blogs
+                </NavLink>
+              </li>
+              {!auth.user ? (<>
+                <li className="nav-item">
+                  <NavLink to="/register" className="nav-link">
+                    Register
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to="/login" className="nav-link">
+                    Login
+                  </NavLink>
+                </li></>) : (<>
+                  <li className="nav-item dropdown">
                     <NavLink
                       className="nav-link dropdown-toggle"
                       href="#"
@@ -73,12 +73,12 @@ function NavBar() {
                       {auth?.user?.name}
                     </NavLink>
                     <ul className="dropdown-menu">
-                    <li className="nav-item">
-              <NavLink to="/dashboard" className="nav-link">
-                <img src={DummyUser} alt="Dummy" className="dummyUser"/>
-              </NavLink>
-            </li>
-            
+                      <li className="nav-item">
+                        <NavLink to="/dashboard" className="nav-link">
+                          <img src={DummyUser} alt="Dummy" className="dummyUser" />
+                        </NavLink>
+                      </li>
+
                       <li>
                         <NavLink
                           onClick={handleLogout}
@@ -91,17 +91,17 @@ function NavBar() {
                     </ul>
                   </li>
                 </>)}
-        
-           
-                  
-        
-          
-          </ul>
+
+
+
+
+
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-    <Toaster/>
-  </>
+      </nav>
+      <Toaster />
+    </>
   );
 }
 

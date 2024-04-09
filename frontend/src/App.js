@@ -10,6 +10,7 @@ import Contact from './components/Contact.js';
 import Profile from './components/Profile';
 import About from './components/About.js';
 import Upload from './components/Upload.js'
+import Details from './components/Details';
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/upload" element={<Upload />}></Route>
+        <Route path="/details" element={<Details />}></Route>
       </Routes>
       <Footer/>
     </Router>

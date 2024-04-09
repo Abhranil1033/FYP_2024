@@ -5,8 +5,24 @@ import HelpIcon from '@mui/icons-material/Help';
 import LogoutIcon from '@mui/icons-material/Logout';
 import './Sidebar.css';
 import { Link } from 'react-router-dom';
+import { Toaster, toast } from 'react-hot-toast';
+import { useAuth } from "../context/auth";
+
 
 function Sidebar({openSidebarToggle, OpenSidebar}) {
+    const [auth, setAuth] = useAuth();
+
+    const handleLogout = () => {
+        setAuth({
+          ...auth,
+          user: null,
+          token: "",
+        });
+        localStorage.removeItem("auth");
+        toast.success("Logout Successful");
+        console.log("Logout clicked")
+      };
+
   return (
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
         <div className='sidebar-title'>
@@ -33,7 +49,7 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
                 </Link>
             </li>
             <li className='sidebar-list-item'>
-                <Link to={"/Logout"}>
+                <Link onClick={handleLogout}>
                     <LogoutIcon className='icon'/> Logout
                 </Link>
             </li>
