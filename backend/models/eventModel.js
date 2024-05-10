@@ -1,15 +1,36 @@
 import mongoose from "mongoose";
 
 const eventSchema = new mongoose.Schema({
-    city:{
+    district:{
         type:String,
-        required : [true,"Enter city"],
-        trim: true
+        required : true,
+        // trim: true
     },
     state:{
         type:String,
-        required : [true,"Enter state"],
+        required : true,
         trim: true
+    },
+    latitude:{
+        type:String,
+        // required : true,
+        trim: true
+    },
+    longitude:{
+        type:String,
+        // required : true,
+        trim: true
+    },
+    date:{
+        type : Date,
+        // required : true
+    },
+    time:{
+        type : Date,
+    },
+    details:{
+        type : String,
+        // required : true
     },
     images: [
         {
@@ -22,15 +43,7 @@ const eventSchema = new mongoose.Schema({
                 required: true
             }
         }
-    ],
-    details:{
-        type : String,
-        required : true
-    },
-    dateTime:{
-        type : Date,
-        required : true
-    }
+    ]
 });
 
 export default mongoose.model("events",eventSchema);

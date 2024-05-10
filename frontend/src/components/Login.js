@@ -17,7 +17,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/v1/auth/login", {
+      const res = await axios.post("/api/v1/login", {
 
         email,
         password
@@ -32,7 +32,7 @@ const Login = () => {
           token:res.data.token
         })
         localStorage.setItem("auth",JSON.stringify(res.data));
-        console.log("forwarding to homepage")
+        // console.log("forwarding to homepage")
         navigate("/");
       } else {
         toast.error(res.data.message);

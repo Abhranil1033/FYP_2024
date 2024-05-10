@@ -42,7 +42,7 @@ function NavBar() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/upload" className="nav-link ">
+                <NavLink to="/event/new" className="nav-link ">
                   Upload
                 </NavLink>
               </li>
