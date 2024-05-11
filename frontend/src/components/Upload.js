@@ -6,7 +6,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import UploadIcon from '@mui/icons-material/Upload';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
-// import { useAuth } from '../context/auth';
 import { jwtDecode } from "jwt-decode";
 
 
@@ -75,7 +74,6 @@ const Upload = () => {
       console.log("Event created:", res.data);
       toast.success("Uploaded successfully");
 
-
       //reset after uploading
       setDistrict("");
       setStatE("");
@@ -85,7 +83,6 @@ const Upload = () => {
       setTime("");
       setFileName("No selected file");
       setImage(null);
-
 
 
 
