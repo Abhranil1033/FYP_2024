@@ -5,7 +5,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import LogoutIcon from '@mui/icons-material/Logout';
 import './Sidebar.css';
 import { Link } from 'react-router-dom';
-import { Toaster, toast } from 'react-hot-toast';
+import {  toast } from 'react-hot-toast';
 import { useAuth } from "../context/auth";
 
 
