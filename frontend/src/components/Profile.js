@@ -1,11 +1,30 @@
 import React from "react";
 import "./Profile.css";
-import User from "../images/user.jpg";
+// import User from "../images/user.jpg";
+import { useAuth } from "../context/auth";
 import { Link } from "react-router-dom";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Profile = () => {
+const[Name,setName]=useState("");
+const[Email,setEmail]=useState("");
+const[Phone,setPhone]=useState("");
+const[auth,setAuth]=useAuth();
+
+const setProfileInfo = () =>{
+  const phone = auth.user.phone;
+const email = auth.user.email;
+const name = auth.user.name;
+setName(name);
+setEmail(email);
+setPhone(phone);
+}
+useEffect(() => {
+   setProfileInfo();
+}, []);
   return (
     <>
       <section className="vh-100">
@@ -26,7 +45,7 @@ const Profile = () => {
                     className="img-fluid my-5"
                     style={{ width: 80 }}
                   />
-                  <h5>Marie Horwitz</h5>
+                  <h5>{Name}</h5>
 
                   <i className="far fa-edit mb-5" />
                 </div>
@@ -37,11 +56,11 @@ const Profile = () => {
                     <div className="col pt-1">
                       <div className="col-6 mb-3">
                         <h6>Email</h6>
-                        <p className="text-muted">gaurav@example.com</p>
+                        <p className="text-muted">{Email}</p>
                       </div>
                       <div className="col-6 mb-3">
                         <h6>Phone</h6>
-                        <p className="text-muted">123 456 789</p>
+                        <p className="text-muted">{Phone}</p>
                       </div>
 
                       <div className="row pt-1 editDiv">
