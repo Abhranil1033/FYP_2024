@@ -71,7 +71,7 @@ const Upload = () => {
         time: timeValue,
         image: image
       },{headers : {'Content-Type' : 'multipart/form-data'}});
-
+      
       console.log("Event created:", res.data);
       toast.success("Uploaded successfully");
 
