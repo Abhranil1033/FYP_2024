@@ -32,6 +32,12 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
 
+    upload:{
+        type:Number,
+        required:true,
+        default: 0
+    }
+
 }, {timestamp:true});
 
 userSchema.pre("save", async function (next) {
