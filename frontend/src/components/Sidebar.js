@@ -20,7 +20,7 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
         });
         localStorage.removeItem("auth");
         toast.success("Logout Successful");
-        console.log("Logout clicked")
+        console.log("Logout clicked");
       };
 
   return (

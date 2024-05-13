@@ -10,7 +10,8 @@ export const createGroupChat = async (req, res) => {
         const groupChat = await chatModel.create({
             chatName: req.body.name,
             users: users,
-            groupAdmin: req.user
+            groupAdmin: req.user,
+            eventId : req.body.eventId
         });
 
         const fullGroupChat = await chatModel.findOne({ _id: groupChat._id })
@@ -43,3 +44,23 @@ export const addNewUser = async (req, res) => {
     }
 
 }
+
+export const getChatDetails = async(res,next) => {
+    try {
+        const chat = await chatModel.findById(req.params.id);
+
+        if(!chat){
+            res.status(404);
+            throw new Error("Chat details not found");
+        }else{
+            res.status(200).json({
+                success : true,
+                chat
+            })
+        }
+    }catch(error){
+        res.status(400);
+        throw new Error(error.message);
+    }
+}
+

@@ -18,6 +18,10 @@ const chatSchema = new mongoose.Schema({
     groupAdmin : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "user"
+    },
+    eventId : {
+        type : String,
+        ref : "events"
     }
 },{timestamp:true});
 

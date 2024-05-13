@@ -9,22 +9,22 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Profile = () => {
-const[Name,setName]=useState("");
-const[Email,setEmail]=useState("");
-const[Phone,setPhone]=useState("");
-const[auth,setAuth]=useAuth();
+  const [Name, setName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Phone, setPhone] = useState("");
+  const [auth, setAuth] = useAuth();
 
-const setProfileInfo = () =>{
-  const phone = auth.user.phone;
-const email = auth.user.email;
-const name = auth.user.name;
-setName(name);
-setEmail(email);
-setPhone(phone);
-}
-useEffect(() => {
-   setProfileInfo();
-}, []);
+  const setProfileInfo = () => {
+    const phone = auth.user.phone;
+    const email = auth.user.email;
+    const name = auth.user.name;
+    setName(name);
+    setEmail(email);
+    setPhone(phone);
+  }
+  useEffect(() => {
+    setProfileInfo();
+  }, []);
   return (
     <>
       <section className="vh-100">

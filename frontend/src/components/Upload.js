@@ -61,20 +61,33 @@ const Upload = () => {
     const userId = decodedToken._id;
 
     try {
-      const res = await axios.post("/api/v1/event/new", {
+      // Creating chat
+      const admin = JSON.stringify([userId]);
+      const chatRes = await axios.post("/api/v1/chat/new",{
+        chatName : district,
+        users : admin,
+        groupAdmin : admin,
+      });
+  
+      console.log("Chat created", chatRes.data);
+      const chatId = chatRes.data._id;
+  
+      // Now, make the event creation request including the chatId
+      const eventRes = await axios.post("/api/v1/event/new", {
         district,
         state: statE,
         latitude: lat,
         longitude: long,
         date,
         time: timeValue,
-        image: image
-      },{headers : {'Content-Type' : 'multipart/form-data'}});
-
-      console.log("Event created:", res.data);
+        image: image,
+        chatId: chatId // Include the chatId in the request body
+      },{ headers : {'Content-Type' : 'multipart/form-data'}});
+  
+      console.log("Event created:", eventRes.data);
       toast.success("Uploaded successfully");
-
-      //reset after uploading
+  
+      // Reset after uploading
       setDistrict("");
       setStatE("");
       setLat("");
@@ -83,27 +96,16 @@ const Upload = () => {
       setTime("");
       setFileName("No selected file");
       setImage(null);
-
-
-
-      // creating chat
-      const admin = JSON.stringify([userId]);
-      console.log("District:", district); // Add this line before sending the request
-
-      const chatRes = await axios.post("/api/v1/chat/new",{
-        chatName : district,
-        users : admin
-      });
-
-      console.log("Chat created", chatRes.data);
-
+  
+      // Handle further operations with eventRes
+  
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
     }
   }
 
-  
+
 
   return (
     <div className='uploadContainer'>

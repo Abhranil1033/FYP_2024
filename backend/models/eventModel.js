@@ -43,7 +43,11 @@ const eventSchema = new mongoose.Schema({
                 required: true
             }
         }
-    ]
+    ],
+    chatId:{
+        type : String,
+        requierd : true
+    }
 });
 
 export default mongoose.model("events",eventSchema);

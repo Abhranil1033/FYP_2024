@@ -84,7 +84,6 @@ const Details = () => {
       <div className='belowSlides'>
         <div className='description'>
           <h3>DETAILS</h3>
-          <p className='detailsText'>eurxxqnitcoiywbvukwycthiwxhnglqerkgchrgjqexhrlkjb ljlgbecnhrlxqmihfincgrlnkejrhxfq rfguecgnwxlezhf lrugecxrukhze;lxjhckruhkjerfnklrehcguwhnxj;lrjj</p>
           <p>Date : 12/05/2024</p>
           <p>Time : 12 : 00 PM</p>
         </div>

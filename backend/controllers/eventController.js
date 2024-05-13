@@ -32,7 +32,8 @@ export const createEvent = async (req, res) => {
                 // url: myCloud.secure_url
                 public_id:"sample id",
                 url:"sample url"
-            }
+            },
+            chatId : req.body.chatId
         }).save();
 
         res.status(201).json({
