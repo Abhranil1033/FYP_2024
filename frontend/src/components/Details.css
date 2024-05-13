@@ -28,23 +28,27 @@
     word-wrap: break-word;
 }
 
-.detailsButton{
+.eventDetailsButton {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 40px;
-    padding: 10px;
+    justify-content: space-between;
+    margin-top: 20px; /* Add some top margin for separation */
+  }
+  
+  .eventDetailsButton a {
     background-color: rgb(144, 144, 248);
-    border-radius: 5px;
-}
-
-.registerLink{
     color: white;
     text-decoration: none;
-}
+    padding: 10px 20px; /* Adjust padding for button size */
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Add smooth transition effect */
+  }
+  
+  .eventDetailsButton a:hover {
+    background-color: rgba(144, 144, 248, 0.8); /* Darken the background color on hover */
+  }
 
-.detailsButton :hover{
-    transform: scale(0.99);
-    transition: 0.4s;
-}
+  .eventDetSubButton{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
