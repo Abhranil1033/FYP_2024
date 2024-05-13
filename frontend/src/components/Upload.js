@@ -85,6 +85,7 @@ const Upload = () => {
       },{ headers : {'Content-Type' : 'multipart/form-data'}});
   
       console.log("Event created:", eventRes.data);
+
       toast.success("Uploaded successfully");
   
       // Reset after uploading
