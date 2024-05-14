@@ -1,6 +1,5 @@
 import React from "react";
 import "./Card.css";
-// import Dummy from "../images/dirt.jpeg";
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
@@ -9,7 +8,7 @@ const Card = (props) => {
       <div className="homeImg">
         <img className="dirtImage" src={props.image[0].url} alt="" />
 
-        <Link to="/details" className="viewDetails">
+        <Link to={`/events/${props.id}`} className="viewDetails">
           View Details
         </Link>
       </div>

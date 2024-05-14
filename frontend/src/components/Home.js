@@ -41,7 +41,7 @@ const Home = () => {
       <div className="row">
       {Events?.map((e) => (
         <div className="homeCards col-md-6">
-          <Card image={e.images} district={e.district} state={e.state}/>
+          <Card image={e.images} district={e.district} state={e.state} id={e._id}/>
         </div>
       ))}
       </div>

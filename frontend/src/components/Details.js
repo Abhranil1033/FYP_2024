@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import './Details.css';
@@ -6,7 +7,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { jwtDecode } from "jwt-decode";
 import { toast } from 'react-hot-toast';
-
+import Loader from '../components/Loader/Loader.js'
 
 const spanStyle = {
   padding: '20px',
@@ -61,7 +62,6 @@ const addToGroup = async (e) => {
 
     console.log("User added to chat group:", addUserRes.data);
 
-    // Handle success...
   } catch (error) {
     console.log(error);
     toast.error("Failed to add user to chat group");
@@ -69,6 +69,54 @@ const addToGroup = async (e) => {
 }
 
 const Details = () => {
+  const params = useParams();
+  const [eventDetails, seteventDetails] = useState(null);
+  const eventID = params.id;
+
+  const getEventDetails = async (eventID) => {
+    try {
+      const details = await axios.get(`/api/v1/events/${eventID}`);
+      if (details && details.data.event) {
+        seteventDetails(details.data.event);
+      } else {
+        console.log("No available Events");
+        toast.error("No available activities");
+      }
+    } catch (error) {
+      console.error("Error fetching events:", error);
+      toast.error("Error fetching activities");
+    }
+  };
+
+  useEffect(() => {
+    getEventDetails(eventID);
+  }, [eventID]);
+
+  if(!eventDetails) {
+    // Render a loading indicator or some placeholder content while data is being fetched
+    return <Loader />;
+  }
+
+  //converting date string to a readable format
+  const dateString = eventDetails.date;
+  const dateObject = new Date(dateString); // Parse the date string
+  const year = dateObject.getFullYear(); // Get the year (e.g., 2024)
+  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Get the month (0-indexed, so add 1), padStart ensures 2 digits
+  const date = String(dateObject.getDate()).padStart(2, '0'); // Get the date, padStart ensures 2 digits
+  const formattedDate = `${date}-${month}-${year}`; // Concatenate year, month, and date with dashes
+
+  //converting time string to a readable format
+  const timeString = "2024-05-03T06:42:41.383Z"; // Sample time string
+  const timeObject = new Date(timeString); // Parse the time string
+  // Get hours and minutes
+  const hours = timeObject.getHours();
+  const minutes = String(timeObject.getMinutes()).padStart(2, '0'); // Ensure 2 digits
+  // Convert 24-hour format to 12-hour format with AM/PM notation
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedHours = hours % 12 === 0 ? 12 : hours % 12; // Convert 0 to 12
+  const formattedTime = `${formattedHours}:${minutes} ${ampm}`; // Concatenate hours, minutes, and AM/PM
+
+
   return (
     <div className='slide-container'>
       <Slide>
@@ -80,16 +128,14 @@ const Details = () => {
           </div>
         ))}
       </Slide>
-      <p className='place'>Silchar, Assam</p>
+      <p className='place'>{eventDetails.district}, {eventDetails.state}</p>
       <div className='belowSlides'>
         <div className='description'>
           <h3>DETAILS</h3>
-          <p>Date : 12/05/2024</p>
-          <p>Time : 12 : 00 PM</p>
+          <p>Date : {formattedDate}</p>
+          <p>Time : {formattedTime}</p>
         </div>
         <div className='eventDetailsButton'>
-          {/* <Link className='registerLink'>VIEW ON MAP</Link>
-          <Link to='/event/chat' className='registerLink'>REGISTER FOR THE EVENT</Link> */}
           <Link className='eventDetSubButton'>VIEW ON MAP</Link>
           <Link to='/event/chat' className='eventDetSubButton' onClick={addToGroup}>REGISTER</Link>
         </div>
@@ -98,4 +144,4 @@ const Details = () => {
   )
 }
 
-export default Details
+export default Details;
