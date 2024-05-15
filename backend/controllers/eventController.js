@@ -56,15 +56,13 @@ export const getAllEvents = async (req, res) => {
     const itemsInAPage = 8;
     const totalItems = await eventModel.countDocuments();
 
-    const apiFeature = new apiFeatures(eventModel.find(), req.query).pagination(itemsInAPage);
+    const apiFeature = new apiFeatures(eventModel.find(), req.query).search().pagination(itemsInAPage);
     
     const events = await apiFeature.query;
     // const Events = await eventModel.find();
     res.status(200).json({
         success: true,
         events,
-        
-        
         itemsInAPage,
         totalItems
     });

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { jwtDecode } from "jwt-decode";
 import { toast } from 'react-hot-toast';
-import Loader from '../components/Loader/Loader.js'
+import Loader from '../components/Loader/Loader.js';
 
 const spanStyle = {
   padding: '20px',
@@ -59,7 +59,7 @@ const addToGroup = async (e) => {
       chatId: storedChatId,
       userId: userId
     });
-
+    toast.success("User registered for the event");
     console.log("User added to chat group:", addUserRes.data);
 
   } catch (error) {
@@ -136,7 +136,7 @@ const Details = () => {
           <p>Time : {formattedTime}</p>
         </div>
         <div className='eventDetailsButton'>
-          <Link className='eventDetSubButton'>VIEW ON MAP</Link>
+          <Link to={`/event/${eventID}/map`} className='eventDetSubButton'>VIEW ON MAP</Link>
           <Link to='/event/chat' className='eventDetSubButton' onClick={addToGroup}>REGISTER</Link>
         </div>
       </div>

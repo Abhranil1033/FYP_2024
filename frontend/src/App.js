@@ -10,7 +10,8 @@ import Contact from './components/Contact.js';
 import Profile from './components/Profile';
 import About from './components/About.js';
 import Upload from './components/Upload.js'
-import Details from './components/Details';
+import Details from './components/Details.js';
+import Map from './components/Map.js'
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/about" element={<About />}></Route>
         <Route path="/event/new" element={<Upload />}></Route>
         <Route path="/events/:id" element={<Details />}></Route>
+        <Route path="/event/:id/map" element={<Map />}></Route>
       </Routes>
       <Footer/>
     </Router>
