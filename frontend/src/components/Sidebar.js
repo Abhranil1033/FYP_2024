@@ -1,6 +1,6 @@
 import React from 'react'
  import Person2Icon from '@mui/icons-material/Person2';
-import MailIcon from '@mui/icons-material/Mail';
+// import MailIcon from '@mui/icons-material/Mail';
 import HelpIcon from '@mui/icons-material/Help';
 import LogoutIcon from '@mui/icons-material/Logout';
 import './Sidebar.css';
@@ -12,14 +12,15 @@ import { useAuth } from "../context/auth";
 function Sidebar({openSidebarToggle, OpenSidebar}) {
     const [auth, setAuth] = useAuth();
 
-    const handleLogout = () => {
+    const handleLogout = (e) => {
+        e.preventDefault();
         setAuth({
           ...auth,
           user: null,
           token: "",
         });
         localStorage.removeItem("auth");
-        toast.success("Logout Successful");
+        toast.success("Logout Successfull");
         console.log("Logout clicked");
       };
 
@@ -38,11 +39,11 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
                   <Person2Icon className='icon' /> Profile
                 </Link>
             </li>
-            <li className='sidebar-list-item'>
+            {/* <li className='sidebar-list-item'>
                 <Link to={"/inbox"}>
                     <MailIcon className='icon'/> Inbox
                 </Link>
-            </li>
+            </li> */}
             <li className='sidebar-list-item'>
                 <Link to={"/help"}>
                     <HelpIcon className='icon'/> Help

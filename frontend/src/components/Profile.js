@@ -24,7 +24,7 @@ const Profile = () => {
   }
   useEffect(() => {
     setProfileInfo();
-  }, []);
+  },);
   return (
     <>
       <section className="vh-100">

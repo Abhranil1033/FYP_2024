@@ -44,9 +44,14 @@ const eventSchema = new mongoose.Schema({
             }
         }
     ],
-    chatId:{
-        type : String,
-        requierd : true
+    // chatId:{
+    //     type : String,
+    //     requierd : true
+    // },
+    volunteers:{
+        type:Number,
+        requierd:true,
+        default:0
     }
 });
 

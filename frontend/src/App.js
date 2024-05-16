@@ -12,6 +12,7 @@ import About from './components/About.js';
 import Upload from './components/Upload.js'
 import Details from './components/Details.js';
 import Map from './components/Map.js'
+import Help from './components/Help.js';
 
 
 const App = () => {
@@ -20,7 +21,8 @@ const App = () => {
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>        
+        <Route path="/dashboard" element={<Dashboard />}></Route>  
+        <Route path="/help" element={<Help />}></Route>     
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/contact" element={<Contact />}></Route>

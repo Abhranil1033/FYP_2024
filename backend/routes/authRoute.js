@@ -1,5 +1,5 @@
 import express  from "express";
-import { loginController, registerController } from "../controllers/authController.js";
+import { adduploadController, loginController, registerController } from "../controllers/authController.js";
 
 
 const router = express.Router();
@@ -8,6 +8,7 @@ const router = express.Router();
 //LOGIN || POST 
 router.post("/login",loginController);
 router.post("/register",registerController);
+router.post("/addupload",adduploadController);
 
 
 

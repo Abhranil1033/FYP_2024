@@ -9,8 +9,8 @@ export const createEvent = async (req, res) => {
     try {
         // const file = req.files.images;
         // const myCloud = await cloudinary.v2.uploader.upload(file.tempFilePath, { folder: "FYP", width: 150, crop: "scale" });
-        const file = req.file;
-        console.log(file);
+        // const file = req.file;
+        // console.log(file);
 
         // const fileUri = getDataUri(recfile);
 
@@ -33,7 +33,7 @@ export const createEvent = async (req, res) => {
                 public_id:"sample id",
                 url:"sample url"
             },
-            chatId : req.body.chatId
+            // chatId : req.body.chatId
         }).save();
 
         res.status(201).json({
@@ -83,5 +83,33 @@ export const getEventDetails = async (req, res, next) => {
     })
 }
 
+export const addVolunteerController = async (req, res) => {
+    try {
+        const eventId = req.body.eventID;
+        const event = await eventModel.findById(eventId);
+
+        if (event) {
+            event.volunteers += 1;
+            await event.save();
+
+            res.status(200).json({
+                success: true,
+                message: "Number of volunteers added successfully",
+                event // Sending the updated event object in the response
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: "No such event found"
+            });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Server side error"
+        });
+    }
+};
 
 

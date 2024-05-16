@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
 
     upload:{
         type:Number,
-        required:true,
+        // required:true,
         default: 0
     }
 

@@ -6,7 +6,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import UploadIcon from '@mui/icons-material/Upload';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
-import { jwtDecode } from "jwt-decode";
+import { useAuth } from "../context/auth";
+// import { jwtDecode } from "jwt-decode";
 
 
 const Upload = () => {
@@ -19,7 +20,32 @@ const Upload = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
-  // const auth = useAuth();
+  const [auth, setAuth] = useAuth();
+
+  const callUploadFunctions = async(e)=> {
+    await handleUpload(e);
+    await addUpload();
+  };
+    const addUpload = async () =>{
+      const Email = auth.user.email;
+      const response = await axios.post("/api/v1/addupload/",{
+        Email,
+      });
+      console.log(response);
+      if(response && response.data.success){
+        setAuth({
+          ...auth,
+          user:response.data.user,
+
+        })
+        localStorage.setItem("auth",JSON.stringify(response.data));
+        console.log(auth.user);
+
+      }
+      else{
+        console.error("upload did not get increased");
+      }
+  }
 
   const handleCloudClick = () => {
     document.getElementById("fileInput").click()
@@ -52,59 +78,64 @@ const Upload = () => {
     timeValue.setHours(parseInt(hours, 10));
     timeValue.setMinutes(parseInt(minutes, 10));
 
-    // Retrieve the authentication token from local storage
-    const storedAuth = JSON.parse(localStorage.getItem("auth"));
-    const token = storedAuth.token;
+    // // Retrieve the authentication token from local storage
+    // const storedAuth = JSON.parse(localStorage.getItem("auth"));
+    // const token = storedAuth.token;
 
-    // Decode the token to extract the user ID
-    const decodedToken = jwtDecode(token);
-    const userId = decodedToken._id;
+    // // Decode the token to extract the user ID
+    // const decodedToken = jwtDecode(token);
+    // const userId = decodedToken._id;
 
-    try {
-      // Creating chat
-      const admin = JSON.stringify([userId]);
-      const chatRes = await axios.post("/api/v1/chat/new",{
-        chatName : district,
-        users : admin,
-        groupAdmin : admin,
-      });
+    // try {
+    //   // Creating chat
+    //   const admin = JSON.stringify([userId]);
+    //   const chatRes = await axios.post("/api/v1/chat/new",{
+    //     chatName : district,
+    //     users : admin,
+    //     groupAdmin : admin,
+    //   });
   
-      console.log("Chat created", chatRes.data);
-      const chatId = chatRes.data._id;
+    //   console.log("Chat created", chatRes.data);
+    //   const chatId = chatRes.data._id;
   
       // Now, make the event creation request including the chatId
-      const eventRes = await axios.post("/api/v1/event/new", {
-        district,
-        state: statE,
-        latitude: lat,
-        longitude: long,
-        date,
-        time: timeValue,
-        image: image,
-        chatId: chatId // Include the chatId in the request body
-      },{ headers : {'Content-Type' : 'multipart/form-data'}});
+      try {
+        const eventRes = await axios.post("/api/v1/event/new", {
+          district,
+          state: statE,
+          latitude: lat,
+          longitude: long,
+          date,
+          time: timeValue,
+          image: image,
+          // chatId: chatId // Include the chatId in the request body
+        },{ headers : {'Content-Type' : 'multipart/form-data'}});
+    
+        console.log("Event created:", eventRes.data);
   
-      console.log("Event created:", eventRes.data);
-
-      toast.success("Uploaded successfully");
-  
-      // Reset after uploading
-      setDistrict("");
-      setStatE("");
-      setLat("");
-      setLong("");
-      setDate("");
-      setTime("");
-      setFileName("No selected file");
-      setImage(null);
+        toast.success("Uploaded successfully");
+    
+        // Reset after uploading
+        setDistrict("");
+        setStatE("");
+        setLat("");
+        setLong("");
+        setDate("");
+        setTime("");
+        setFileName("No selected file");
+        setImage(null);
+        
+        
+      }catch (error) {
+        console.log(error);
+        toast.error("Something went wrong");
+      }
+      
   
       // Handle further operations with eventRes
   
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong");
-    }
-  }
+    } 
+  
 
 
 
@@ -163,7 +194,7 @@ const Upload = () => {
       </section>
       {image ?
         <section className='uploadRow uploadButton'>
-          <span onClick={handleUpload}>
+          <span onClick={callUploadFunctions}>
             Upload <UploadIcon />
           </span>
         </section> : <section></section>}

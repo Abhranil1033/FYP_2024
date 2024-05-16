@@ -1,106 +1,123 @@
-import React from 'react'
-import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill }
-  from 'react-icons/bs'
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line }
-  from 'recharts';
-import UploadIcon from '@mui/icons-material/Upload';
-import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import './DashContent.css';
+import React, { useState } from "react";
+import {
+  BsFillArchiveFill,
+  BsFillGrid3X3GapFill,
+  BsPeopleFill,
+  BsFillBellFill,
+} from "react-icons/bs";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  LineChart,
+  Line,
+} from "recharts";
+import UploadIcon from "@mui/icons-material/Upload";
+import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import "./DashContent.css";
+import { useAuth } from "../context/auth";
 
 function DashContent() {
-
+  const [auth, setAuth] = useAuth();
+  const [success, setSuccess] = useState(0);
+ const addition = auth.user ? auth.user.upload + success : 0;
   const data = [
     {
-      name: 'Jan',
+      name: "Jan",
       pv: 5,
       amt: 2400,
     },
     {
-      name: 'Feb',
+      name: "Feb",
       pv: 10,
       amt: 2210,
     },
     {
-      name: 'Mar',
+      name: "Mar",
       pv: 2,
       amt: 2290,
     },
     {
-      name: 'Apr',
+      name: "Apr",
       pv: 8,
       amt: 2000,
     },
     {
-      name: 'May',
+      name: "May",
       pv: 15,
       amt: 2181,
     },
     {
-      name: 'Jun',
+      name: "Jun",
       pv: 7,
       amt: 2500,
     },
     {
-      name: 'Jul',
+      name: "Jul",
       pv: 5,
       amt: 2100,
     },
     {
-      name: 'Aug',
+      name: "Aug",
       pv: 7,
       amt: 2100,
     },
     {
-      name: 'Sep',
+      name: "Sep",
       pv: 9,
       amt: 2100,
     },
     {
-      name: 'Oct',
+      name: "Oct",
       pv: 1,
       amt: 2100,
     },
     {
-      name: 'Nov',
+      name: "Nov",
       pv: 11,
       amt: 2100,
     },
     {
-      name: 'Dec',
+      name: "Dec",
       pv: 9,
       amt: 2100,
     },
   ];
 
-
   return (
-    <main className='main-container'>
+    <main className="main-container">
       {/* <div className='main-title'>
             <h3>DASHBOARD</h3>
         </div> */}
 
-      <div className='main-cards'>
-        <div className='card'>
-          <div className='card-inner'>
+      <div className="main-cards">
+        <div className="card">
+          <div className="card-inner">
             <h3>ACTIVITIES</h3>
-            <DirectionsWalkIcon className='card_icon' />
+            <DirectionsWalkIcon className="card_icon" />
           </div>
-          <h1>300</h1>
+          <h1>{addition}</h1>
         </div>
-        <div className='card'>
-          <div className='card-inner'>
+        <div className="card">
+          <div className="card-inner">
             <h3>UPLOADS</h3>
-            <UploadIcon className='card_icon' />
+            <UploadIcon className="card_icon" />
           </div>
-          <h1>12</h1>
+          <h1>{auth.user.upload}</h1>
         </div>
-        <div className='card'>
-          <div className='card-inner'>
+        <div className="card">
+          <div className="card-inner">
             <h3>SUCCESS</h3>
-            <CheckBoxIcon className='card_icon' />
+            <CheckBoxIcon className="card_icon" />
           </div>
-          <h1>33</h1>
+          <h1>{success}</h1>
         </div>
         {/* <div className='card'>
           <div className='card-inner'>
@@ -111,7 +128,7 @@ function DashContent() {
         </div> */}
       </div>
 
-      <div className='charts'>
+      <div className="charts">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             width={500}
@@ -125,8 +142,8 @@ function DashContent() {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" tick={{ fill: 'white' }}/>
-            <YAxis tick={{ fill: 'white' }}/>
+            <XAxis dataKey="name" tick={{ fill: "white" }} />
+            <YAxis tick={{ fill: "white" }} />
             <Tooltip />
             <Legend />
             <Bar dataKey="pv" fill="#8884d8" />
@@ -147,18 +164,22 @@ function DashContent() {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" tick={{ fill: 'white' }} />
-            <YAxis tick={{ fill: 'white' }}/>
+            <XAxis dataKey="name" tick={{ fill: "white" }} />
+            <YAxis tick={{ fill: "white" }} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+            <Line
+              type="monotone"
+              dataKey="pv"
+              stroke="#8884d8"
+              activeDot={{ r: 8 }}
+            />
             {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
           </LineChart>
         </ResponsiveContainer>
-
       </div>
     </main>
-  )
+  );
 }
 
 export default DashContent;

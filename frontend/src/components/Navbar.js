@@ -46,11 +46,11 @@ function NavBar() {
                   Upload
                 </NavLink>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink to="/blogs" className="nav-link ">
                   Blogs
                 </NavLink>
-              </li>
+              </li> */}
               {!auth.user ? (<>
                 <li className="nav-item">
                   <NavLink to="/register" className="nav-link">

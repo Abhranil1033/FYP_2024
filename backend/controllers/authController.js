@@ -123,3 +123,34 @@ export const loginController = async (req, res) => {
 
   }
 };
+
+
+// adding to the uploads
+
+export const adduploadController = async (req, res) => {
+  try {
+    const userEmail = req.body.Email;
+    const user = await userModel.findOne({ email: userEmail });
+    if (user) {
+      user.upload += 1; // Use '+=' to increment the value
+      await user.save();
+      res.status(200).send({
+        success: true,
+        message: "increased the upload value",
+        user,
+      });
+    } else {
+      res.status(404).send({
+        success: false,
+        message: "user not found",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "server error",
+      error,
+    });
+  }
+};
